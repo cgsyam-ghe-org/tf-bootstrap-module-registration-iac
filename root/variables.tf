@@ -14,12 +14,29 @@
  * limitations under the License.
  */
 
-output "id" {
-  value       = { for k, v in tfe_registry_module.module_registry : k => v.id }
-  description = "The ID of the registry module."
+variable "tfe_org" {
+  description = "The name of the organization associated with the registry module"
+  type        = string
+  default     = null
+  sensitive   = true
 }
 
-output "name" {
-  value       = { for k, v in tfe_registry_module.module_registry : k => v.name }
-  description = "The name of registry module."
+variable "ghe_oauth_token" {
+  type      = string
+  sensitive = true
 }
+
+variable "tfe_teams_api_token" {
+  type      = string
+  sensitive = true
+}
+
+variable "modules_registry" {
+  type = map(object({
+    repo_identifier     = string
+    repo_branch         = optional(string, "")
+    ghe_installation_id = optional(string, null)
+    tags                = bool
+  }))
+}
+

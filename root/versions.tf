@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-output "id" {
-  value       = { for k, v in tfe_registry_module.module_registry : k => v.id }
-  description = "The ID of the registry module."
-}
-
-output "name" {
-  value       = { for k, v in tfe_registry_module.module_registry : k => v.name }
-  description = "The name of registry module."
+terraform {
+  required_version = ">= 1.3.0"
+  required_providers {
+    tfe = {
+      version = "~> 0.54.0"
+    }
+  }
 }
