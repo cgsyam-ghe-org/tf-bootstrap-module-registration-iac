@@ -15,11 +15,11 @@
  */
 
 output "id" {
-  value       = { for k, v in tfe_registry_module.module_registry : k => v.id }
+  value       = module.main.id
   description = "The ID of the registry module."
 }
 
 output "name" {
-  value       = { for k, v in tfe_registry_module.module_registry : k => v.name }
+  value       = module.main.name
   description = "The name of registry module."
 }
