@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
-provider "tfe" {
-  token = var.tfe_teams_api_token
+terraform {
+  required_version = ">= 1.3.0"
+  required_providers {
+    tfe = {
+      version = "~> 0.54.0"
+    }
+  }
 }
